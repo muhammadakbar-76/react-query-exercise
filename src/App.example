@@ -1,0 +1,127 @@
+// import React, { useEffect, useState } from 'react';
+// import './App.css';
+// import { useMutation, useQuery } from 'react-query';
+// import Post from './Post';
+// import {client} from './react-query-client';
+
+// const fetcher = url => fetch(url).then(res => res.json());
+// const timer = (duration,b) => new Promise((resolve,reject) => {
+//   const a = false;
+//   setTimeout(() => {
+//     if (a) {
+//       resolve("yooo you did it");
+//     }
+//     else {
+//       reject("its a me, akbar");
+//     }
+//     console.log("I was run",{b})
+//   },duration)});
+
+// function App() {
+
+//   // const { isLoading,data: posts } = useQuery('posts',() => fetcher("https://jsonplaceholder.typicode.com/posts"),{
+//   //   // select: result => result.slice(0,5) //this property transform data to our need
+//   // });
+
+//   // const mutateId = id => {
+//   //   client.setQueryData(['post',id], oldData => {
+//   //     return {
+//   //       ...oldData,
+//   //       title: "boom boom mutated"
+//   //     }
+//   //   })
+//   // }
+
+//   // useEffect(() => {
+//   //   client.setQueryData('dummy', {
+//   //     id: 5,
+//   //     keranjang: [
+//   //       {
+//   //         name: "Bimoli",
+//   //         amount: 2
+//   //       },
+//   //       {
+//   //         name: "gula_cap_anjay",
+//   //         amount: 10
+//   //       }
+//   //     ]
+//   //   });
+//   // },[]);
+
+//   // const [postId, setPostId] = useState(null);
+
+//   // if(postId !== null){
+//   //   return <Post post={postId} onClick={() => setPostId(null)}/>
+//   // }
+
+//   // if(isLoading){
+//   //   return <h2>Loading...</h2>
+//   // }
+
+//   // return (
+//   //   <div className="App">
+//   //   {posts.map(post => {
+//   //   const cachedPost = client.getQueryData(['post', post.id]);
+//   //     return(
+//   //       <div>
+//   //         <a key={post.id} onClick={() => setPostId(post.id)} href='#'>{post.id} - {post.title} {cachedPost ? '(visited)' : ''}</a>
+//   //         <button onClick={() => mutateId(post.id)}>Mutate</button>
+//   //         <br/><br/>
+//   //       </div>
+//   //     ) 
+//   //   })}
+//   //   </div>
+//   // );
+
+/* --------Mutation------------ */
+
+//   const mutation = useMutation((param) => timer(1000,param), {
+//     onSuccess(data) {
+//       console.log("request is completed", {data});
+//     },
+//     onError(error) {
+//       console.log("error", {error});
+//     },
+//     onSettled(data, error) //both of success and error
+//     {
+//       if (data) {
+//         console.log("request is completed", {data});
+//       }
+//       else {
+//         console.log("error", {error});
+//       }
+//     }
+//   });
+
+//   const callMutation = async () => {
+//     console.log("updating post...");
+//     // await mutation.mutateAsync(22);
+//     mutation.mutate(22, {
+//       onSuccess(data) {
+//         console.log("request is completed", {data});
+//       },
+//       onError(error) {
+//         console.log("error with mutate", {error});
+//       },
+//       onSettled(data, error) //both of success and error
+//       {
+//         if (data) {
+//           console.log("request is completed", {data});
+//         }
+//         else {
+//           console.log("error with mutate", {error});
+//         }
+//       }
+//     });
+//     console.log("post updated");
+//   }
+
+//   return(
+//     <div className='App'>
+//       <h1>Mutations</h1>
+//       <button onClick={() => callMutation()}>Submit</button>
+//     </div>
+//   )
+// }
+
+// export default App;
